@@ -1,9 +1,11 @@
+using Dialogue;
 using UnityEngine;
 
 public class PlayerController : EntityController
 {
     public float MoveSpeed;
 
+    public Blackboard blackboard;
     /// <summary>
     /// To be called on Update
     /// </summary>
@@ -15,5 +17,10 @@ public class PlayerController : EntityController
         
     }
 
+    private void Start()
+    {
+        blackboard.Facts["Test"] += 1;
+        //blackboard.Facts.Add("Test2", 3);
+    }
 
 }

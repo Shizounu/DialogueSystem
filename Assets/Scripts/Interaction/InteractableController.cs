@@ -23,6 +23,7 @@ public class InteractableController : MonoBehaviour, IInteracter
                     else 
                         FocusedInteractable = null;
                 }
+
                 InteractablesInRange.Remove(InteractablesInRange[i]);
             }
             
@@ -39,7 +40,7 @@ public class InteractableController : MonoBehaviour, IInteracter
         if (FocusedInteractable == null && InteractablesInRange.Count > 0)
             FocusedInteractable = InteractablesInRange[0];
     }
-    [ContextMenu("Interact")]
+    
     public void InteractWithFocused()
     {
         if (FocusedInteractable == null)
