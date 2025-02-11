@@ -2,11 +2,6 @@ using UnityEditor;
 using Dialogue;
 using System.Collections.Generic;
 using UnityEngine;
-using Dialogue.Helpers;
-using System.Linq;
-using UnityEngine.Rendering;
-using Mono.Cecil;
-
 
 namespace CustomEditors
 {
@@ -35,8 +30,6 @@ namespace CustomEditors
                 ((Blackboard)target).Facts.Add(newSignature, 0);
             }
             EditorGUILayout.EndHorizontal();
-
-            serializedObject.ApplyModifiedProperties();
         }
         
         private SimpleEditorTableView<KeyValuePair<string,int>> CreateBlackboardTable()

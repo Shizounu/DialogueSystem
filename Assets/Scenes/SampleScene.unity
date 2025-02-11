@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
-  blackboard: {fileID: 11400000, guid: b1270b16655381f4caea2cef6fc95d33, type: 2}
+  blackboard: {fileID: 11400000, guid: f53579b8cf03b944e816eaae5a9b5a44, type: 2}
 --- !u!50 &764414029
 Rigidbody2D:
   serializedVersion: 5
