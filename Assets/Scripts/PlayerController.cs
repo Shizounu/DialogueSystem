@@ -5,7 +5,6 @@ public class PlayerController : EntityController
 {
     public float MoveSpeed;
 
-    public Blackboard blackboard;
     /// <summary>
     /// To be called on Update
     /// </summary>
@@ -16,11 +15,4 @@ public class PlayerController : EntityController
         rigidbody.MovePosition(pos + MoveSpeed * Time.deltaTime * direction);
         
     }
-
-    private void Start()
-    {
-        blackboard.Facts["Test"] += 1;
-        //blackboard.Facts.Add("Test2", 3);
-    }
-
 }

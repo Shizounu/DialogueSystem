@@ -122,6 +122,10 @@ namespace CustomEditors.Dialgoue.Windows
                     return new ExitNode();
                 case NodeType.SentenceNode:
                     return new SentenceNode();
+                case NodeType.Condition:
+                    return new ConditionalNode();
+                case NodeType.Information:
+                    return new InformationNode();
                 default: return null;
             }
         }

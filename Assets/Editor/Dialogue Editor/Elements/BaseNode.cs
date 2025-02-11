@@ -10,15 +10,11 @@ namespace CustomEditors.Dialgoue.Elements {
     public abstract class BaseNode : Node
     {
         public string SlideName;
-        public string Text;
-        public List<string> Choices;
         protected DialogueGraphView graphView;
 
         public virtual void Initialize(Vector2 position, DialogueGraphView graphView)
         {
             SlideName = "SlideName";
-            Text = "Slide Text";
-            Choices = new List<string>();
 
             SetPosition(new Rect(position, Vector2.zero));
 
@@ -64,49 +60,7 @@ namespace CustomEditors.Dialgoue.Elements {
         }
         protected virtual void MakeMain() { }
         protected virtual void MakeOutput() { }
-        protected virtual void MakeExtension()
-        {
-            //Extension container
-            VisualElement customDataContainer = new();
-            customDataContainer.AddToClassList("ds-node__custom-data-container");
-            Foldout textFoldout = ElementUtility.CreateFoldout("Slide Text");
-            TextField textTextField = ElementUtility.CreateTextArea(Text);
-
-            textTextField.AddClasses(
-                "ds-node__text-field",
-                "ds-node__quote-text-field"
-            );
-
-            textFoldout.Add(textTextField);
-            customDataContainer.Add(textFoldout);
-            extensionContainer.Add(customDataContainer);
-        }
-        protected void CreateChoicePort(string choice)
-        {
-            Port choicePort = this.CreatePort();
-
-            Button deleteChoiceButton = ElementUtility.CreateButton("X", () => {
-                if (choicePort.connected)
-                {
-                    graphView.DeleteElements(choicePort.connections);
-                }
-
-                Choices.Remove(choice);
-                graphView.RemoveElement(choicePort);
-            });
-            deleteChoiceButton.AddToClassList("ds-node__button");
-
-            TextField choiceTextField = ElementUtility.CreateTextField(choice);
-            choiceTextField.AddClasses(
-                "ds-node__text-field",
-                "ds-node__text-field__hidden",
-                "ds-node__choice-text-field"
-            );
-            choicePort.Add(choiceTextField);
-            choicePort.Add(deleteChoiceButton);
-
-            outputContainer.Add(choicePort);
-        }
+        protected virtual void MakeExtension() { }
         #endregion
     }
 }

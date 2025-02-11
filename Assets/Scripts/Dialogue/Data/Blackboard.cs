@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Dialogue.Helpers;
 
-namespace Dialogue
+namespace Dialogue.Data
 {
     [CreateAssetMenu(fileName = "new Blackboard", menuName = "Dialogue/Blackboard")]
     public class Blackboard : ScriptableObject

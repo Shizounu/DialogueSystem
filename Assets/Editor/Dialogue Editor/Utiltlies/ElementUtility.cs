@@ -1,9 +1,10 @@
 using CustomEditors.Dialgoue.Elements;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
-using UnityEngine;
+using UnityEditor.UIElements;
 using UnityEngine.UIElements;
+using UnityEngine;
+using System;
+using UnityEditor;
 
 namespace CustomEditors.Dialgoue.Utilities
 {
@@ -47,9 +48,7 @@ namespace CustomEditors.Dialgoue.Utilities
             };
 
             if (onValueChanged != null)
-            {
                 textField.RegisterValueChangedCallback(onValueChanged);
-            }
 
             return textField;
         }
@@ -61,6 +60,52 @@ namespace CustomEditors.Dialgoue.Utilities
             textArea.multiline = true;
 
             return textArea;
+        }
+
+        public static ObjectField CreateSOField<T>(string label, EventCallback<ChangeEvent<UnityEngine.Object>> onValueChanged = null) where T : ScriptableObject
+        {
+            ObjectField objectField = new ObjectField()
+            {
+                label = label,
+                objectType = typeof(T),
+                allowSceneObjects = false
+            };
+            if (onValueChanged != null)
+                objectField.RegisterValueChangedCallback(onValueChanged);
+            
+
+            return objectField;
+        }
+        public static IntegerField CreateIntField(int value = 0, string label = null, EventCallback<ChangeEvent<int>> onValueChanged = null)
+        {
+            IntegerField intField = new()
+            {
+                label = label,
+                value = value,
+            };
+
+            if (onValueChanged != null)
+                intField.RegisterValueChangedCallback(onValueChanged);
+
+            return intField;
+        }
+        public static EnumField CreateEnumField<T>(T value, string label = null, EventCallback<ChangeEvent<Enum>> onValueChanged = null) where T : Enum
+        {
+            EnumField enumField = new()
+            {
+                label = label,
+                value = value,
+                
+            };
+            enumField.Init(value, true);
+
+            
+            
+
+            if (onValueChanged != null)
+                enumField.RegisterValueChangedCallback(onValueChanged);
+
+            return enumField;
         }
     }
 }

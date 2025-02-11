@@ -7,6 +7,8 @@ namespace CustomEditors.Dialgoue.Elements
     {
         StartNode, 
         ExitNode,
-        SentenceNode
+        SentenceNode,
+        Condition,
+        Information
     }
 }

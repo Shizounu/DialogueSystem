@@ -1,5 +1,5 @@
 using UnityEditor;
-using Dialogue;
+using Dialogue.Data;
 using System.Collections.Generic;
 using UnityEngine;
 

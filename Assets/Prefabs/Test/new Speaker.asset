@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 304b787fa195ead48bf9a36db210f9e6, type: 3}
-  m_Name: Test
+  m_Script: {fileID: 11500000, guid: 6e4b159807ed1984e9fe5233d81e0b00, type: 3}
+  m_Name: new Speaker
   m_EditorClassIdentifier: 
-  Facts:
-    list:
-    - Key: Test
-      Value: 29
-    - Key: Test2
-      Value: 0
+  Name: 
+  NameColor: {r: 0, g: 0, b: 0, a: 0}
