@@ -11,7 +11,7 @@ namespace CustomEditors.Dialgoue.Windows
     public class DialogueGraphView : GraphView {
         private DialogueEditorWindow editorWindow;
         private GraphSearchWindow searchWindow;
-
+        public EntryNode entryNode;
         public DialogueGraphView(DialogueEditorWindow editorWindow) {
             this.editorWindow = editorWindow;
 
@@ -19,6 +19,15 @@ namespace CustomEditors.Dialgoue.Windows
             AddGridBackground();
             AddStyles();
             AddSearchWindow();
+
+            AddStartNode();
+        }
+
+        private void AddStartNode()
+        {
+            entryNode = (EntryNode)CreateNode(NodeType.StartNode, new Vector2(100, 300));
+            AddElement(entryNode);
+            //AddElement(CreateNode(NodeType.ExitNode, new Vector2(500, 300)));
         }
 
         #region Context Menu
@@ -36,12 +45,9 @@ namespace CustomEditors.Dialgoue.Windows
             this.AddManipulator(new RectangleSelector());
 
             SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
-            /*
-            this.AddManipulator(CreateContextualMenu("Add Slide", NodeType.Slide));
-            this.AddManipulator(CreateContextualMenu(""))
             
-
-            this.AddManipulator(CreateGroupContextualMenu());*/
+            this.AddManipulator(CreateContextualMenu("Add Slide", NodeType.SentenceNode));
+            this.AddManipulator(CreateGroupContextualMenu());
         }
         private IManipulator CreateGroupContextualMenu()
         {
@@ -53,7 +59,6 @@ namespace CustomEditors.Dialgoue.Windows
 
             return contextualMenuManipulator;
         }
-
 
         private IManipulator CreateContextualMenu(string actionTitle, NodeType type)
         {
@@ -111,7 +116,12 @@ namespace CustomEditors.Dialgoue.Windows
         {
             switch (type)
             {
-
+                case NodeType.StartNode: 
+                    return new EntryNode();
+                case NodeType.ExitNode: 
+                    return new ExitNode();
+                case NodeType.SentenceNode:
+                    return new SentenceNode();
                 default: return null;
             }
         }

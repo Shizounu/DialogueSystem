@@ -7,7 +7,7 @@ using CustomEditors.Dialgoue.Utilities;
 using CustomEditors.Dialgoue.Windows;
 
 namespace CustomEditors.Dialgoue.Elements {
-    public class BaseNode : Node
+    public abstract class BaseNode : Node
     {
         public string SlideName;
         public string Text;
@@ -47,7 +47,7 @@ namespace CustomEditors.Dialgoue.Elements {
         #region Section Constructors
         protected virtual void MakeTitle()
         {
-            TextField slideNameTextField = Utilities.ElementUtility.CreateTextField(SlideName);
+            TextField slideNameTextField = ElementUtility.CreateTextField(SlideName);
             titleContainer.Insert(0, slideNameTextField);
 
             slideNameTextField.AddClasses(

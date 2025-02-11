@@ -1,4 +1,6 @@
+using CustomEditors.Dialgoue.Elements;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -20,36 +22,21 @@ namespace CustomEditors.Dialgoue.Windows
         {
             List<SearchTreeEntry> entries = new List<SearchTreeEntry>()
             {
-                /*
+                
                 new SearchTreeGroupEntry(new GUIContent("Create Element")),
                 new SearchTreeGroupEntry(new GUIContent("Dialogue Node"), 1),
-                new SearchTreeEntry(new GUIContent("Slide Node", indentationIcon))
+                new SearchTreeEntry(new GUIContent("Sentence Node", indentationIcon))
                 {
                     level = 2,
-                    userData = NodeType.Slide
+                    userData = NodeType.SentenceNode
+                },
+                new SearchTreeEntry(new GUIContent("Exit Node", indentationIcon))
+                {
+                    level = 2,
+                    userData = NodeType.ExitNode
                 },
 
-                new SearchTreeGroupEntry(new GUIContent("Actions"), 2),
-                new SearchTreeEntry(new GUIContent("Add Gold", indentationIcon))
-                {
-                    level= 3,
-                    userData = NodeType.AddGoldAction
-                },
-                new SearchTreeEntry(new GUIContent("Remove Gold", indentationIcon))
-                {
-                    level= 3,
-                    userData = NodeType.RemoveGoldAction
-                },
-                new SearchTreeEntry(new GUIContent("Add Health", indentationIcon))
-                {
-                    level= 3,
-                    userData = NodeType.AddHealthAction
-                },
-                new SearchTreeEntry(new GUIContent("Remove Health", indentationIcon))
-                {
-                    level= 3,
-                    userData = NodeType.RemoveHealthAction
-                },
+
 
 
                 new SearchTreeGroupEntry(new GUIContent("Dialogue Group"), 1),
@@ -57,7 +44,7 @@ namespace CustomEditors.Dialgoue.Windows
                 {
                     level = 2,
                     userData = new Group()
-                }*/
+                }
             };
             return entries;
         }
@@ -67,6 +54,13 @@ namespace CustomEditors.Dialgoue.Windows
             Vector2 localPos = graphView.getLocalMousePosition(context.screenMousePosition, true);
             switch (SearchTreeEntry.userData)
             {
+                case NodeType.SentenceNode:
+                case NodeType.ExitNode:
+                    {
+                        SentenceNode node = (SentenceNode)graphView.CreateNode((NodeType)SearchTreeEntry.userData, localPos);
+                        graphView.AddElement(node);
+                        return true;
+                    }
                 case Group _:
                     {
                         Group group = (Group)graphView.CreateGroup("DialogueGroup", localPos);
