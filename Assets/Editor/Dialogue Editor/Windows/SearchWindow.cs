@@ -55,9 +55,14 @@ namespace CustomEditors.Dialgoue.Windows
             switch (SearchTreeEntry.userData)
             {
                 case NodeType.SentenceNode:
+                    {
+                        SentenceNode node = (SentenceNode)graphView.CreateNode(NodeType.SentenceNode, localPos);
+                        graphView.AddElement(node);
+                        return true;
+                    }
                 case NodeType.ExitNode:
                     {
-                        SentenceNode node = (SentenceNode)graphView.CreateNode((NodeType)SearchTreeEntry.userData, localPos);
+                        ExitNode node = (ExitNode)graphView.CreateNode(NodeType.ExitNode, localPos);
                         graphView.AddElement(node);
                         return true;
                     }
