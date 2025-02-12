@@ -10,8 +10,8 @@ namespace CustomEditors.Dialgoue.Windows
 {
     public class DialogueEditorWindow : EditorWindow
     {
-        private const string defaultEventName = "New Event";
-        private string curEventName = "New Event";
+        private const string defaultEventName = "new Dialogue";
+        private string curEventName = defaultEventName;
         private DialogueGraphView graphView;
 
         [MenuItem("Shizounu/Dialgoue Editor")]
@@ -31,7 +31,7 @@ namespace CustomEditors.Dialgoue.Windows
         {
             Toolbar toolbar = new Toolbar();
 
-            toolbar.Add(ElementUtility.CreateTextField(defaultEventName, "FileName:", change => curEventName = change.newValue));
+            toolbar.Add(ElementUtility.CreateTextField(curEventName, "FileName:", change => curEventName = change.newValue));
             toolbar.Add(ElementUtility.CreateButton("Save", () => DoSave()));
 
             toolbar.AddStyleSheets("EventEditor/ToolbarStyle.uss");
@@ -53,7 +53,7 @@ namespace CustomEditors.Dialgoue.Windows
         }
         private void DoSave()
         {
-            //Utilities.SerializationUtility.Save(curEventName, graphView, graphView.entryNode);
+            SavingUtility.Save(curEventName, graphView);
         }
     }
 }

@@ -3,10 +3,12 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 using CustomEditors.Dialgoue.Utilities;
+using Dialogue.Data;
 
 namespace CustomEditors.Dialgoue.Elements
 {
-    public class ExitNode : BaseNode {
+    public class ExitNode : BaseNode
+    {
         
         protected override void MakeInput()
         {
@@ -37,6 +39,11 @@ namespace CustomEditors.Dialgoue.Elements
         protected override void MakeExtension()
         {
             //Removing the text body
+        }
+
+        public override DialogueElement GetElement()
+        {
+            return null;
         }
     }
 }

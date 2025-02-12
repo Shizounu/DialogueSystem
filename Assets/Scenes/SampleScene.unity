@@ -555,6 +555,7 @@ GameObject:
   - component: {fileID: 764414025}
   - component: {fileID: 764414028}
   - component: {fileID: 764414031}
+  - component: {fileID: 764414032}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -657,7 +658,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
-  blackboard: {fileID: 11400000, guid: f53579b8cf03b944e816eaae5a9b5a44, type: 2}
 --- !u!50 &764414029
 Rigidbody2D:
   serializedVersion: 5
@@ -746,6 +746,19 @@ MonoBehaviour:
   _InteractionRange: 3
   InteractablesInRange: []
   FocusedInteractable: {fileID: 0}
+--- !u!114 &764414032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764414024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa258c74fe9cea44fb9e463559c742c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  element: {fileID: 11400000, guid: 3c6e429d9c06ba64f9d99c7febe7ea58, type: 2}
 --- !u!1 &779619145
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,9 +33,9 @@ namespace CustomEditors.Dialgoue.Utilities
         public static Port CreatePort(this BaseNode node, string portName = "", Orientation orientation = Orientation.Horizontal, Direction direction = Direction.Output, Port.Capacity capacity = Port.Capacity.Single)
         {
             Port port = node.InstantiatePort(orientation, direction, capacity, typeof(bool));
-
             port.portName = portName;
-
+            if(direction == Direction.Output)
+                node.BranchPorts.Add(port);
             return port;
         }
 

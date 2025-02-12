@@ -25,7 +25,7 @@ namespace Dialogue.Data
         }
 
 #if UNITY_EDITOR
-        public Vector2Int NodePosition;
+        public Rect NodePosition;
 #endif
     }
 }

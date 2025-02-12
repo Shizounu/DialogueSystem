@@ -4,7 +4,7 @@ namespace Dialogue.Data
 {
     public class DialogueData : ScriptableObject
     {
-        public DialogueElement StartingElement;
+        [SerializeReference] public DialogueElement StartingElement;
 
     }
 }

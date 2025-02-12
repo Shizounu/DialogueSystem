@@ -32,6 +32,19 @@ namespace CustomEditors.Dialgoue.Elements
             extensionContainer.Add(ElementUtility.CreateEnumField<ConditionOperator>(ConditionOperator, "Operator", ctx => ConditionOperator = (ConditionOperator)ctx.newValue));
             extensionContainer.Add(ElementUtility.CreateIntField(Value, "Value", ctx => Value = ctx.newValue));
         }
+
+        public override DialogueElement GetElement()
+        {
+            return new Conditional()
+            {
+                Blackboard = this.Blackboard,
+                FactKey = this.FactKey,
+                Operator = this.ConditionOperator,
+                Value = this.Value,
+                NodePosition = this.GetPosition()
+
+            };
+        }
     }
 
 }

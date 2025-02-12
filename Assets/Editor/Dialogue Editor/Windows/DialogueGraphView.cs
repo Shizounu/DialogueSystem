@@ -9,6 +9,7 @@ using System.Collections.Generic;
 namespace CustomEditors.Dialgoue.Windows
 {
     public class DialogueGraphView : GraphView {
+        
         private DialogueEditorWindow editorWindow;
         private GraphSearchWindow searchWindow;
         public EntryNode entryNode;

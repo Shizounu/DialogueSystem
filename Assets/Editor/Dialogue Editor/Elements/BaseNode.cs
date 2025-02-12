@@ -5,17 +5,19 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using CustomEditors.Dialgoue.Utilities;
 using CustomEditors.Dialgoue.Windows;
+using Dialogue.Data;
 
 namespace CustomEditors.Dialgoue.Elements {
     public abstract class BaseNode : Node
     {
         public string SlideName;
+        public List<Port> BranchPorts;
         protected DialogueGraphView graphView;
 
         public virtual void Initialize(Vector2 position, DialogueGraphView graphView)
         {
             SlideName = "SlideName";
-
+            BranchPorts = new();
             SetPosition(new Rect(position, Vector2.zero));
 
             mainContainer.AddToClassList("ds-node__main-container");
@@ -61,6 +63,8 @@ namespace CustomEditors.Dialgoue.Elements {
         protected virtual void MakeMain() { }
         protected virtual void MakeOutput() { }
         protected virtual void MakeExtension() { }
+
+        public abstract DialogueElement GetElement();
         #endregion
     }
 }

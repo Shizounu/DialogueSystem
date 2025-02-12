@@ -43,5 +43,15 @@ namespace CustomEditors.Dialgoue.Elements
             customDataContainer.Add(textFoldout);
             extensionContainer.Add(customDataContainer);
         }
+
+        public override DialogueElement GetElement()
+        {
+            return new Sentence()
+            {
+                Text = this.Text,
+                Speaker = this.Speaker,
+                NodePosition = this.GetPosition()
+            };
+        }
     }
 }
