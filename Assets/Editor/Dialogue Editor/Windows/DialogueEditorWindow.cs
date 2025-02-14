@@ -1,4 +1,5 @@
 using CustomEditors.Dialgoue.Utilities;
+using Dialogue.Data;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
@@ -13,7 +14,7 @@ namespace CustomEditors.Dialgoue.Windows
         private const string defaultEventName = "new Dialogue";
         private string curEventName = defaultEventName;
         private DialogueGraphView graphView;
-
+        private DialogueData data;
         [MenuItem("Shizounu/Dialgoue Editor")]
         public static void Open()
         {
@@ -34,6 +35,8 @@ namespace CustomEditors.Dialgoue.Windows
             toolbar.Add(ElementUtility.CreateTextField(curEventName, "FileName:", change => curEventName = change.newValue));
             toolbar.Add(ElementUtility.CreateButton("Save", () => DoSave()));
 
+            toolbar.Add(ElementUtility.CreateSOField<DialogueData>("File to Load", null ,change => data = (DialogueData)change.newValue));
+            toolbar.Add(ElementUtility.CreateButton("Load", () => DoLoad()));
             toolbar.AddStyleSheets("EventEditor/ToolbarStyle.uss");
 
             rootVisualElement.Add(toolbar);
@@ -54,6 +57,10 @@ namespace CustomEditors.Dialgoue.Windows
         private void DoSave()
         {
             SavingUtility.Save(curEventName, graphView);
+        }
+        private void DoLoad()
+        {
+            SavingUtility.Load(data, graphView);
         }
     }
 }

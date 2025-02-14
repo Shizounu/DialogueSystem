@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 namespace CustomEditors.Dialgoue.Elements
 {
+    [System.Serializable]
     public class SentenceNode : BaseNode
     {
         public string Text;
@@ -20,17 +21,20 @@ namespace CustomEditors.Dialgoue.Elements
         }
         protected override void MakeOutput()
         {
-            Port exitPort = this.CreatePort("Outgoing", Orientation.Horizontal, Direction.Output, Port.Capacity.Multi);
-            outputContainer.Add(exitPort);
+            foreach (var item in BranchPorts)
+                outputContainer.Add(item.port);
         }
 
         protected override void MakeExtension()
         {
+            Button addPrioPort = ElementUtility.CreateButton("Add Priority", () => CreatePriorityPort(0));
+            extensionContainer.Add(addPrioPort);
+
             //Extension container
             VisualElement customDataContainer = new();
             customDataContainer.AddToClassList("ds-node__custom-data-container");
             Foldout textFoldout = ElementUtility.CreateFoldout("Sentence Text");
-            ObjectField speakerField = ElementUtility.CreateSOField<Speaker>("Speaker", ctx => Speaker = (Speaker)ctx.newValue);
+            ObjectField speakerField = ElementUtility.CreateSOField<Speaker>("Speaker", Speaker, ctx => Speaker = (Speaker)ctx.newValue);
             TextField textTextField = ElementUtility.CreateTextArea(Text, null, ctx => Text = ctx.newValue);
 
             textTextField.AddClasses(
@@ -48,6 +52,7 @@ namespace CustomEditors.Dialgoue.Elements
         {
             return new Sentence()
             {
+                ID = DialogueData.GetID(),
                 Text = this.Text,
                 Speaker = this.Speaker,
                 NodePosition = this.GetPosition()

@@ -15,8 +15,9 @@ namespace CustomEditors.Dialgoue.Elements
         }
         protected override void MakeOutput()
         {
-            Port outPort = this.CreatePort("Start");
-            outputContainer.Add(outPort);
+            foreach (var item in BranchPorts) {
+                outputContainer.Add(item.port);
+            }
         }
         protected override void MakeTitle()
         {
@@ -28,16 +29,14 @@ namespace CustomEditors.Dialgoue.Elements
                 "ds-node__text-field__hidden",
                 "ds-node__filename-text-field"
             );
-            titleContainer.style.color = new Color(0, 153, 0); //TODO fix color to actually apply
-            
-
             titleContainer.Add(titleLabel);
 
             
         }
         protected override void MakeExtension()
         {
-            //Removing the text body
+            Button addPrioPort = ElementUtility.CreateButton("Add Priority", () => CreatePriorityPort(0));
+            extensionContainer.Add(addPrioPort);
         }
 
         public override DialogueElement GetElement()

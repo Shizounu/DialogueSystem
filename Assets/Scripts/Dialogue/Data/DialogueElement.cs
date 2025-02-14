@@ -1,15 +1,15 @@
+using Dialogue.Helpers;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-
-#if UNITY_EDITOR
-
-#endif
+using UnityEngine.Rendering.Universal.Internal;
 
 namespace Dialogue.Data
 {
     [System.Serializable]
     public abstract class DialogueElement {
-        public List<DialogueElement> Branches = new();    
+        public string ID;
+        public List<(int, string)> Branches = new();  
         public abstract bool CanEnter();
         public abstract void OnEnter();
 
@@ -17,11 +17,26 @@ namespace Dialogue.Data
         /// 
         /// </summary>
         /// <returns>If null is returned exit the dialogue</returns>
-        public DialogueElement GetNextElement() {
-            foreach (var Branch in Branches)
-                if(Branch.CanEnter())
-                    return Branch;
-            return null; 
+        public DialogueElement GetNextElement(DialogueData dialogue) {
+            List<(int, string)> copy = new(Branches);
+            copy.Sort((a, b) => (a.Item1 - b.Item1));
+
+            while (copy.Count > 0) {
+                List<(int, string)> curPrio = GetElementsWithPriority(copy.Max(ctx => ctx.Item1));
+                foreach (var cur in curPrio)
+                    if (dialogue.GetElement(cur.Item2).CanEnter())
+                        return dialogue.GetElement(cur.Item2);
+                    else
+                        copy.Remove(cur);
+            }
+
+
+            return null;
+        }
+
+        private List<(int, string)> GetElementsWithPriority(int priority)
+        {
+            return Branches.Where(ctx => ctx.Item1 == priority).ToList();
         }
 
 #if UNITY_EDITOR

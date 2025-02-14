@@ -16,6 +16,10 @@ namespace CustomEditors.Dialgoue.Windows
         public DialogueGraphView(DialogueEditorWindow editorWindow) {
             this.editorWindow = editorWindow;
 
+            Init();
+        }
+        public void Init()
+        {
             AddManipulators();
             AddGridBackground();
             AddStyles();

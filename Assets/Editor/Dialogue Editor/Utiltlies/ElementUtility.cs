@@ -33,9 +33,11 @@ namespace CustomEditors.Dialgoue.Utilities
         public static Port CreatePort(this BaseNode node, string portName = "", Orientation orientation = Orientation.Horizontal, Direction direction = Direction.Output, Port.Capacity capacity = Port.Capacity.Single)
         {
             Port port = node.InstantiatePort(orientation, direction, capacity, typeof(bool));
-            port.portName = portName;
+            port.portName = portName;/*
             if(direction == Direction.Output)
-                node.BranchPorts.Add(port);
+                node.BranchPorts.Add(port);*/
+            if (direction == Direction.Input)
+                node.inputPort = port;
             return port;
         }
 
@@ -62,13 +64,14 @@ namespace CustomEditors.Dialgoue.Utilities
             return textArea;
         }
 
-        public static ObjectField CreateSOField<T>(string label, EventCallback<ChangeEvent<UnityEngine.Object>> onValueChanged = null) where T : ScriptableObject
+        public static ObjectField CreateSOField<T>(string label, T initialValue = null, EventCallback<ChangeEvent<UnityEngine.Object>> onValueChanged = null) where T : ScriptableObject
         {
             ObjectField objectField = new ObjectField()
             {
                 label = label,
                 objectType = typeof(T),
-                allowSceneObjects = false
+                allowSceneObjects = false,
+                value = initialValue
             };
             if (onValueChanged != null)
                 objectField.RegisterValueChangedCallback(onValueChanged);

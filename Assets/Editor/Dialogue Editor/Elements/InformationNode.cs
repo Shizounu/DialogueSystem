@@ -3,6 +3,7 @@ using CustomEditors.Dialgoue.Windows;
 using Dialogue.Data;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace CustomEditors.Dialgoue.Elements
 {
@@ -19,13 +20,17 @@ namespace CustomEditors.Dialgoue.Elements
         }
         protected override void MakeOutput()
         {
-            Port exitPort = this.CreatePort("Outgoing", Orientation.Horizontal, Direction.Output, Port.Capacity.Multi);
-            outputContainer.Add(exitPort);
+            foreach (var item in BranchPorts)
+            {
+                outputContainer.Add(item.port);
+            }
         }
 
         protected override void MakeExtension()
         {
-            extensionContainer.Add(ElementUtility.CreateSOField<Dialogue.Data.Blackboard>("Blackboard", ctx => Blackboard = (Dialogue.Data.Blackboard)ctx.newValue));
+            Button addPrioPort = ElementUtility.CreateButton("Add Priority", () => CreatePriorityPort(0));
+            extensionContainer.Add(addPrioPort);
+            extensionContainer.Add(ElementUtility.CreateSOField<Dialogue.Data.Blackboard>("Blackboard",Blackboard, ctx => Blackboard = (Dialogue.Data.Blackboard)ctx.newValue));
             extensionContainer.Add(ElementUtility.CreateTextField(FactKey, "Fact Key", ctx => FactKey = ctx.newValue));
             extensionContainer.Add(ElementUtility.CreateEnumField<ComparisonOperator>(ConditionOperator, "Operator", ctx => ConditionOperator = (ComparisonOperator)ctx.newValue));
             extensionContainer.Add(ElementUtility.CreateIntField(Value, "Value", ctx => Value = ctx.newValue));
@@ -35,6 +40,7 @@ namespace CustomEditors.Dialgoue.Elements
         {
             return new Information()
             {
+                ID = DialogueData.GetID(),
                 Blackboard = this.Blackboard,
                 FactKey = this.FactKey,
                 Operator = this.ConditionOperator,
