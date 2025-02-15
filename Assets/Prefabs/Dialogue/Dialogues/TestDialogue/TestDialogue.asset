@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b978ce2d66d57304d92302d06a68d61f, type: 3}
+  m_Name: TestDialogue
+  m_EditorClassIdentifier: 
+  EntryElements:
+  - rid: 8954730901218787396
+  - rid: 8954730901218787397
+  Elements:
+  - rid: 8954730901218787398
+  - rid: 8954730901218787399
+  - rid: 8954730901218787400
+  - rid: 8954730901218787401
+  references:
+    version: 2
+    RefIds:
+    - rid: 8954730901218787396
+      type: {class: PriorityIDTuple, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        Priority: 0
+        ID: 2a031fd8ccf01b5428882817d4e31e91
+    - rid: 8954730901218787397
+      type: {class: PriorityIDTuple, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        Priority: 1
+        ID: 25d8e6a642d77e74286a342771a1e105
+    - rid: 8954730901218787398
+      type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 2a031fd8ccf01b5428882817d4e31e91
+        NodePosition:
+          serializedVersion: 2
+          x: 378
+          y: 300
+          width: 354
+          height: 234
+        Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
+        Text: What? You dont know the thing. Leave!
+    - rid: 8954730901218787399
+      type: {class: Conditional, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 25d8e6a642d77e74286a342771a1e105
+        NodePosition:
+          serializedVersion: 2
+          x: 378
+          y: 571
+          width: 343
+          height: 196
+        Blackboard: {fileID: 11400000, guid: 4352807583b5b0745a25a012c9efb7d3, type: 2}
+        FactKey: Test
+        Operator: 0
+        Value: 0
+    - rid: 8954730901218787400
+      type: {class: Information, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 4a9e4c84ebac16e4ea9d3b1d4908c898
+        NodePosition:
+          serializedVersion: 2
+          x: 732
+          y: 571
+          width: 343
+          height: 196
+        Blackboard: {fileID: 11400000, guid: 4352807583b5b0745a25a012c9efb7d3, type: 2}
+        Operator: 1
+        FactKey: Test
+        Value: 1
+    - rid: 8954730901218787401
+      type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 8f758ed6a3f326f458f5d7ae9be2f4b8
+        NodePosition:
+          serializedVersion: 2
+          x: 1093
+          y: 571
+          width: 354
+          height: 234
+        Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
+        Text: So you do know the thing? Forget it.

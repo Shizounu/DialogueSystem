@@ -45,5 +45,10 @@ namespace CustomEditors.Dialgoue.Elements
         {
             return null;
         }
+
+        public override void LoadData(DialogueElement element)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

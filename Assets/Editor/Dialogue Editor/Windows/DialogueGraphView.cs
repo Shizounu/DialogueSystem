@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using CustomEditors.Dialgoue.Utilities;
 using System.Collections.Generic;
+using Dialogue.Data;
 
 
 namespace CustomEditors.Dialgoue.Windows
@@ -98,10 +99,12 @@ namespace CustomEditors.Dialgoue.Windows
             return group;
         }
 
-        public BaseNode CreateNode(NodeType type, Vector2 pos) {
+        public BaseNode CreateNode(NodeType type, Vector2 pos, DialogueElement elementToLoad = null) {
             BaseNode node = GetNode(type);
 
             node.Initialize(pos, this);
+            if (elementToLoad != null)
+                node.LoadData(elementToLoad);
             node.Draw();
 
             return node;

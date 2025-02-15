@@ -49,6 +49,14 @@ namespace CustomEditors.Dialgoue.Elements
                 NodePosition = this.GetPosition()
             };
         }
+
+        public override void LoadData(DialogueElement element)
+        {
+            Blackboard = ((Conditional)element).Blackboard;
+            FactKey = ((Conditional)element).FactKey;
+            ConditionOperator = ((Conditional)element).Operator;
+            Value = ((Conditional)element).Value;
+        }
     }
 
 }

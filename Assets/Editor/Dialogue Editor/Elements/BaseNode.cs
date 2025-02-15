@@ -108,6 +108,8 @@ namespace CustomEditors.Dialgoue.Elements {
             outputContainer.Add(choicePort);
             return prioPort;
         }
+
+        public abstract void LoadData(DialogueElement element);
         #endregion
     }
 

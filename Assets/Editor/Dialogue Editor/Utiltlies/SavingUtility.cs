@@ -75,7 +75,7 @@ namespace CustomEditors.Dialgoue.Utilities
             switch (elem)
             {
                 case Information information:
-                    InformationNode infoNode = (InformationNode)graphView.CreateNode(NodeType.Information, information.NodePosition.position);
+                    InformationNode infoNode = (InformationNode)graphView.CreateNode(NodeType.Information, information.NodePosition.position, information);
 
                     infoNode.Blackboard = information.Blackboard;
                     infoNode.FactKey = information.FactKey;
@@ -85,7 +85,7 @@ namespace CustomEditors.Dialgoue.Utilities
                     graphView.AddElement(infoNode);
                     return infoNode;
                 case Conditional conditional:
-                    ConditionalNode condNode = (ConditionalNode)graphView.CreateNode(NodeType.Condition, conditional.NodePosition.position);
+                    ConditionalNode condNode = (ConditionalNode)graphView.CreateNode(NodeType.Condition, conditional.NodePosition.position, conditional);
 
                     condNode.Blackboard = conditional.Blackboard;
                     condNode.FactKey = conditional.FactKey;
@@ -95,7 +95,7 @@ namespace CustomEditors.Dialgoue.Utilities
                     graphView.AddElement(condNode);
                     return condNode;
                 case Sentence sentence:
-                    SentenceNode sentNode = (SentenceNode)graphView.CreateNode(NodeType.SentenceNode, sentence.NodePosition.position);
+                    SentenceNode sentNode = (SentenceNode)graphView.CreateNode(NodeType.SentenceNode, sentence.NodePosition.position, sentence);
 
                     sentNode.Speaker = sentence.Speaker;
                     sentNode.Text = sentence.Text;

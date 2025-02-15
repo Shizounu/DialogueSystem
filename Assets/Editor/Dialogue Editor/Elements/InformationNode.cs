@@ -7,7 +7,8 @@ using UnityEngine.UIElements;
 
 namespace CustomEditors.Dialgoue.Elements
 {
-    public class InformationNode : BaseNode {
+    public class InformationNode : BaseNode
+    {
         public Dialogue.Data.Blackboard Blackboard;
         public string FactKey;
         public ComparisonOperator ConditionOperator;
@@ -47,6 +48,14 @@ namespace CustomEditors.Dialgoue.Elements
                 Value = this.Value,
                 NodePosition = this.GetPosition()
             };
+        }
+
+        public override void LoadData(DialogueElement element)
+        {
+            Blackboard = ((Information)element).Blackboard;
+            FactKey = ((Information)element).FactKey;
+            ConditionOperator = ((Information)element).Operator;
+            Value = ((Information)element).Value;
         }
     }
 }

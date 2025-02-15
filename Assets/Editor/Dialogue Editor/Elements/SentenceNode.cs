@@ -58,5 +58,11 @@ namespace CustomEditors.Dialgoue.Elements
                 NodePosition = this.GetPosition()
             };
         }
+
+        public override void LoadData(DialogueElement element)
+        {
+            Text = ((Sentence)element).Text;
+            Speaker = ((Sentence)element).Speaker;
+        }
     }
 }
