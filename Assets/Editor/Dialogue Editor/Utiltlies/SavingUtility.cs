@@ -50,7 +50,7 @@ namespace CustomEditors.Dialgoue.Utilities
             List<(int, BaseNode)> branches = GetBranches(curNode);
             elements.Add(elem);
             foreach (var node in branches)
-                elem.Branches.Add((node.Item1, GetElements(node.Item2, ref elements)));
+                elem.Branches.Add(new (node.Item1, GetElements(node.Item2, ref elements)));
             return elem.ID;
         }
 
@@ -66,8 +66,8 @@ namespace CustomEditors.Dialgoue.Utilities
         {
             BaseNode node = AddNode(curElement, view);
             foreach (var item in curElement.Branches) {
-                BaseNode node2 = LoadTree(data.GetElement(item.Item2), data, view);
-                MakeConnection(node, node2, item.Item1, view);
+                BaseNode node2 = LoadTree(data.GetElement(item.ID), data, view);
+                MakeConnection(node, node2, item.Priority, view);
             }
             return node;
         }

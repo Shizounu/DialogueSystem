@@ -13,75 +13,101 @@ MonoBehaviour:
   m_Name: TestDialogue
   m_EditorClassIdentifier: 
   EntryElements:
-  - rid: 8954730901218787396
-  - rid: 8954730901218787397
+  - rid: 8954730920507605060
+  - rid: 8954730920507605061
   Elements:
-  - rid: 8954730901218787398
-  - rid: 8954730901218787399
-  - rid: 8954730901218787400
-  - rid: 8954730901218787401
+  - rid: 8954730920507605062
+  - rid: 8954730920507605063
+  - rid: 8954730920507605064
+  - rid: 8954730920507605065
+  - rid: 8954730920507605066
   references:
     version: 2
     RefIds:
-    - rid: 8954730901218787396
+    - rid: 8954730920507605060
       type: {class: PriorityIDTuple, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
         Priority: 0
-        ID: 2a031fd8ccf01b5428882817d4e31e91
-    - rid: 8954730901218787397
+        ID: cee6c95a68036e1458924908378cbe0d
+    - rid: 8954730920507605061
       type: {class: PriorityIDTuple, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
         Priority: 1
-        ID: 25d8e6a642d77e74286a342771a1e105
-    - rid: 8954730901218787398
+        ID: 3cd47b7aad2818e458f7882c2931e01b
+    - rid: 8954730920507605062
       type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
-        ID: 2a031fd8ccf01b5428882817d4e31e91
+        ID: cee6c95a68036e1458924908378cbe0d
+        Branches:
+        - Priority: 0
+          ID: 26220433364c9da409489a9144b172c3
         NodePosition:
           serializedVersion: 2
-          x: 378
-          y: 300
+          x: 515
+          y: 139
           width: 354
           height: 234
         Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
-        Text: What? You dont know the thing. Leave!
-    - rid: 8954730901218787399
-      type: {class: Conditional, ns: Dialogue.Data, asm: Assembly-CSharp}
+        Text: You don't know the thing? BEGONE!
+    - rid: 8954730920507605063
+      type: {class: Information, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
-        ID: 25d8e6a642d77e74286a342771a1e105
+        ID: 26220433364c9da409489a9144b172c3
+        Branches: []
         NodePosition:
           serializedVersion: 2
-          x: 378
-          y: 571
+          x: 1398
+          y: 139
+          width: 343
+          height: 196
+        Blackboard: {fileID: 11400000, guid: 4352807583b5b0745a25a012c9efb7d3, type: 2}
+        Operator: 2
+        FactKey: Test
+        Value: 0
+    - rid: 8954730920507605064
+      type: {class: Conditional, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 3cd47b7aad2818e458f7882c2931e01b
+        Branches:
+        - Priority: 0
+          ID: 14446826e35731b418ca8c05eb9a0cce
+        NodePosition:
+          serializedVersion: 2
+          x: 515
+          y: 373
           width: 343
           height: 196
         Blackboard: {fileID: 11400000, guid: 4352807583b5b0745a25a012c9efb7d3, type: 2}
         FactKey: Test
         Operator: 0
         Value: 0
-    - rid: 8954730901218787400
-      type: {class: Information, ns: Dialogue.Data, asm: Assembly-CSharp}
-      data:
-        ID: 4a9e4c84ebac16e4ea9d3b1d4908c898
-        NodePosition:
-          serializedVersion: 2
-          x: 732
-          y: 571
-          width: 343
-          height: 196
-        Blackboard: {fileID: 11400000, guid: 4352807583b5b0745a25a012c9efb7d3, type: 2}
-        Operator: 1
-        FactKey: Test
-        Value: 1
-    - rid: 8954730901218787401
+    - rid: 8954730920507605065
       type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
-        ID: 8f758ed6a3f326f458f5d7ae9be2f4b8
+        ID: 14446826e35731b418ca8c05eb9a0cce
+        Branches:
+        - Priority: 0
+          ID: c070f8c9c06adcf4dad202a7ae87dd4c
         NodePosition:
           serializedVersion: 2
-          x: 1093
-          y: 571
+          x: 1027
+          y: 373
           width: 354
           height: 234
         Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
-        Text: So you do know the thing? Forget it.
+        Text: 'You know the thing? FORGET IT! '
+    - rid: 8954730920507605066
+      type: {class: Information, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: c070f8c9c06adcf4dad202a7ae87dd4c
+        Branches: []
+        NodePosition:
+          serializedVersion: 2
+          x: 1398
+          y: 139
+          width: 343
+          height: 196
+        Blackboard: {fileID: 11400000, guid: 4352807583b5b0745a25a012c9efb7d3, type: 2}
+        Operator: 2
+        FactKey: Test
+        Value: 0
