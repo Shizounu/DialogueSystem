@@ -30,6 +30,8 @@ namespace CustomEditors
                 ((Blackboard)target).Facts.Add(newSignature, 0);
             }
             EditorGUILayout.EndHorizontal();
+
+            EditorUtility.SetDirty(target);
         }
         
         private SimpleEditorTableView<KeyValuePair<string,int>> CreateBlackboardTable()

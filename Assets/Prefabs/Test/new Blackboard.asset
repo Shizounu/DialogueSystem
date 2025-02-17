@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: new Blackboard
   m_EditorClassIdentifier: 
   Facts:
-    list: []
+    list:
+    - Key: Test
+      Value: 3
+    - Key: Test2
+      Value: 5
+    - Key: Test3
+      Value: 0
