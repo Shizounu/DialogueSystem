@@ -5,6 +5,8 @@ namespace Dialogue.Data {
     public class Speaker : ScriptableObject
     {
         public string Name = "new Speaker";
-        public Color NameColor = Color.white; 
+        public Color NameColor = Color.white;
+        public float SpeechSpeed = 1.5f;
+        [Range(0f, 2f)] public float SpeechSpeedWiggle = 0.25f; 
     }
 }

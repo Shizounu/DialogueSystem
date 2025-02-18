@@ -15,7 +15,7 @@ MonoBehaviour:
   Facts:
     list:
     - Key: Test
-      Value: 3
+      Value: 0
     - Key: Test2
       Value: 5
     - Key: Test3

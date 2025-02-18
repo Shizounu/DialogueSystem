@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ba6d67488a78242bc173f3fbc99655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dialogue: {fileID: 0}
+  Dialogue: {fileID: 11400000, guid: 6b8767a86ee4342428b7ef970db140ca, type: 2}
   Range: 3
 --- !u!1 &209702386
 GameObject:
@@ -1337,7 +1337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Nameplate: {fileID: 209702388}
-  NameplateBG: {fileID: 0}
+  NameplateBG: {fileID: 273770553}
   MainText: {fileID: 1732089634}
   UICam: {fileID: 471035929}
   input: {fileID: 764414025}

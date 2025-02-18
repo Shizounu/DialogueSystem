@@ -69,16 +69,16 @@ public class DialogueManager : SingletonBehaviour<DialogueManager>
     public void ShowSentence(Sentence sentence) {
         Nameplate.text = sentence.Speaker.Name;
         NameplateBG.color = sentence.Speaker.NameColor;
-        StartCoroutine(WriteText(sentence.Text));
+        StartCoroutine(WriteText(sentence.Text, sentence.Speaker));
     }
 
-    public IEnumerator WriteText(string text) {
+    public IEnumerator WriteText(string text, Speaker speaker) {
         CanContinue = false; 
         MainText.text = "";
-        float delay = 1f / text.Length;
+        float delay = speaker.SpeechSpeed / text.Length;
         for (int i = 0; i < text.Length; i++) {
             MainText.text += text[i];
-            yield return new WaitForSeconds(delay + Random.Range(-(delay * 0.25f), delay * 0.25f));
+            yield return new WaitForSeconds(delay + Random.Range(-(delay * speaker.SpeechSpeedWiggle), delay * speaker.SpeechSpeedWiggle));
         }
         CanContinue = true; 
         
