@@ -40,14 +40,12 @@ public class InteractableController : MonoBehaviour, IInteracter
         if (FocusedInteractable == null && InteractablesInRange.Count > 0)
             FocusedInteractable = InteractablesInRange[0];
     }
-    
     public void InteractWithFocused()
     {
         if (FocusedInteractable == null)
             return;
         FocusedInteractable.Interact(this);
     }
-
     public void IncrementFocused()
     {
         int indx = InteractablesInRange.FindIndex(a => a == FocusedInteractable);
@@ -69,6 +67,7 @@ public class InteractableController : MonoBehaviour, IInteracter
     {
         UpdateInteractablesInRange();
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
