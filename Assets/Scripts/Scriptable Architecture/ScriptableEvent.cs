@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Shizounu.Library.ScriptableArchitecture
+namespace ScriptableArchitecture
 {
     [CreateAssetMenu(fileName = "ScriptableEvent", menuName = "Shizounu/ScriptableArchitecture/ScriptableEvent", order = -1)]
     public class ScriptableEvent : ScriptableObject {

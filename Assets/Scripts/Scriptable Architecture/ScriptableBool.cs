@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Shizounu.Library.ScriptableArchitecture
+namespace ScriptableArchitecture
 {
     [CreateAssetMenu(fileName = "ScriptableBool", menuName = "Shizounu/ScriptableArchitecture/ScriptableBool", order = 0)]
     public class ScriptableBool : ScriptableVariable<bool>{

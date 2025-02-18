@@ -12,11 +12,6 @@ namespace Shizounu.Library.Editor
         };
 
         private GUIStyle popupStyle;
-
-
-        private bool isExpanded;
-
-
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label){
             if(popupStyle == null){
                 popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"));
@@ -62,15 +57,15 @@ namespace Shizounu.Library.Editor
         }
     }
     
-    [CustomPropertyDrawer(typeof(Shizounu.Library.ScriptableArchitecture.Vector3Reference))]
+    [CustomPropertyDrawer(typeof(ScriptableArchitecture.Vector3Reference))]
     public class ScriptableVector3Drawer : ScriptableReferenceDrawer{}
 
-    [CustomPropertyDrawer(typeof(Shizounu.Library.ScriptableArchitecture.FloatReference))]
+    [CustomPropertyDrawer(typeof(ScriptableArchitecture.FloatReference))]
     public class ScriptableFloatDrawer : ScriptableReferenceDrawer{}
 
-    [CustomPropertyDrawer(typeof(Shizounu.Library.ScriptableArchitecture.IntReference))]
+    [CustomPropertyDrawer(typeof(ScriptableArchitecture.IntReference))]
     public class ScriptableIntDrawer : ScriptableReferenceDrawer{}
 
-    [CustomPropertyDrawer(typeof(Shizounu.Library.ScriptableArchitecture.BoolReference))]
+    [CustomPropertyDrawer(typeof(ScriptableArchitecture.BoolReference))]
     public class ScriptablBoolDrawer : ScriptableReferenceDrawer{}
 }

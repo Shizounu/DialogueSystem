@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Shizounu.Library.ScriptableArchitecture
+namespace ScriptableArchitecture
 {
     [CreateAssetMenu(fileName = "ScriptableFloat", menuName = "Shizounu/ScriptableArchitecture/ScriptableFloat", order = 0)]
     public class ScriptableFloat : ScriptableVariable<float>{

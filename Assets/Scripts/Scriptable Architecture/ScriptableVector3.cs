@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Shizounu.Library.ScriptableArchitecture
+namespace ScriptableArchitecture
 {
     [CreateAssetMenu(fileName = "ScriptableVector3", menuName = "Shizounu/ScriptableArchitecture/ScriptableVector3", order = 0)]
     public class ScriptableVector3 : ScriptableVariable<Vector3>{

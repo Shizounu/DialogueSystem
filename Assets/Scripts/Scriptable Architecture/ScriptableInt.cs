@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Shizounu.Library.ScriptableArchitecture
+namespace ScriptableArchitecture
 {
     [CreateAssetMenu(fileName = "ScriptableInt", menuName = "Shizounu/ScriptableArchitecture/ScriptableInt", order = 0)]
     public class ScriptableInt : ScriptableVariable<int>{

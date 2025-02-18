@@ -10,13 +10,7 @@ namespace CustomEditors.Dialgoue.Utilities
 {
     public static class SavingUtility  {
 
-        #region Helpers
-
-        #endregion
-
         #region Saving
-
-
         public static void Save(string DialogueName, DialogueGraphView graphView)
         {
             //Prepare Folder

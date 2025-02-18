@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Shizounu.Library.ScriptableArchitecture
+namespace ScriptableArchitecture
 {
     public abstract class ScriptableVariable<T> : ScriptableObject {
         [SerializeField] T initialValue;
