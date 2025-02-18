@@ -40,6 +40,11 @@ namespace CustomEditors.Dialgoue.Windows
                     level = 2,
                     userData = NodeType.Information
                 },
+                new SearchTreeEntry(new GUIContent("Event Trigger Node", indentationIcon))
+                {
+                    level = 2,
+                    userData = NodeType.EventTrigger
+                },
 
 
 
@@ -74,6 +79,13 @@ namespace CustomEditors.Dialgoue.Windows
                 case NodeType.Information:
                     {
                         InformationNode node = (InformationNode)graphView.CreateNode(NodeType.Information, localPos);
+                        graphView.AddElement(node);
+                        return true;
+                    }
+
+                case NodeType.EventTrigger:
+                    {
+                        EventTriggerNode node = (EventTriggerNode)graphView.CreateNode(NodeType.EventTrigger, localPos);
                         graphView.AddElement(node);
                         return true;
                     }

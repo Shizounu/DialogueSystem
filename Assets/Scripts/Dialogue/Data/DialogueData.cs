@@ -41,12 +41,16 @@ namespace Dialogue.Data
         {
             return EntryElements.Where(ctx => ctx.Priority == priority).ToList();
         }
-    
+
+#if UNITY_EDITOR
         public void Clear()
         {
             EntryElements.Clear();
             Elements.Clear();
+            groupDatas.Clear();
         }
+        public List<GroupData> groupDatas;
+#endif
     }
 
     [Serializable]
@@ -58,4 +62,13 @@ namespace Dialogue.Data
         public int Priority;
         public string ID; 
     }
+
+#if UNITY_EDITOR
+    [Serializable] 
+    public class GroupData {
+        public string Title;
+        public List<string> NodeIDs;
+        public Rect position;
+    }
+#endif
 }

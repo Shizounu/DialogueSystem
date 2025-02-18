@@ -8,6 +8,7 @@ namespace CustomEditors.Dialgoue.Elements
         StartNode,
         SentenceNode,
         Condition,
-        Information
+        Information,
+        EventTrigger
     }
 }

@@ -15,6 +15,7 @@ namespace CustomEditors.Dialgoue.Windows
         private GraphSearchWindow searchWindow;
         public EntryNode entryNode;
         public Dictionary<string, BaseNode> NodeCache;
+        public List<Group> groups;
 
         public DialogueGraphView(DialogueEditorWindow editorWindow) {
             this.editorWindow = editorWindow;
@@ -24,6 +25,7 @@ namespace CustomEditors.Dialgoue.Windows
         public void Init()
         {
             NodeCache = new();
+            groups = new();
 
             AddManipulators();
             AddGridBackground();
@@ -85,7 +87,7 @@ namespace CustomEditors.Dialgoue.Windows
         #region Create Element Functions 
         public GraphElement CreateGroup(string title, Vector2 localMousePosition)
         {
-            Group group = new Group()
+            Group group = new()
             {
                 title = title
             };
@@ -100,14 +102,13 @@ namespace CustomEditors.Dialgoue.Windows
                 }
             }
 
+
+            groups.Add(group);
             return group;
         }
 
         public BaseNode CreateNode(NodeType type, Vector2 pos, DialogueElement elementToLoad = null) {
             BaseNode node = GetNode(type);
-
-
-
             node.Initialize(pos, this);
             if (elementToLoad != null)
                 node.LoadData(elementToLoad);
@@ -144,6 +145,8 @@ namespace CustomEditors.Dialgoue.Windows
                     return new ConditionalNode();
                 case NodeType.Information:
                     return new InformationNode();
+                case NodeType.EventTrigger:
+                    return new EventTriggerNode();
                 default: return null;
             }
         }
@@ -190,6 +193,9 @@ namespace CustomEditors.Dialgoue.Windows
             foreach (var item in change.elementsToRemove) {
                 if(item is BaseNode node) {
                     NodeCache.Remove(node.UID);
+                }
+                if(item is Group group) {
+                    groups.Remove(group);
                 }
             }
 

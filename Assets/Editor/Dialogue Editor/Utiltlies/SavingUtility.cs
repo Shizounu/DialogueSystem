@@ -5,6 +5,7 @@ using Dialogue.Data;
 using System.Linq;
 using CustomEditors.Dialgoue.Elements;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 
 namespace CustomEditors.Dialgoue.Utilities
 {
@@ -27,6 +28,8 @@ namespace CustomEditors.Dialgoue.Utilities
             SaveNodes(graphView, data);
             data.EntryElements = GetBranches(graphView.entryNode);
 
+            //Save Groups
+            SaveGroups(graphView, data);
 
             //Save to file
             if (!AssetDatabase.AssetPathExists($"Assets/Prefabs/Dialogue/Dialogues/{DialogueName}/{DialogueName}.asset"))
@@ -44,7 +47,17 @@ namespace CustomEditors.Dialgoue.Utilities
                 data.Elements.Add(element);
             }
         }
-
+        private static void SaveGroups(DialogueGraphView graphView, DialogueData data) {
+            foreach (var element in graphView.groups) {
+                GroupData groupData = new() { Title = element.title,position = element.GetPosition(), NodeIDs = new() };
+                foreach (var containedElement in element.containedElements) {
+                    if(containedElement is BaseNode node) {
+                        groupData.NodeIDs.Add(node.UID);
+                    }
+                }
+                data.groupDatas.Add(groupData);
+            }
+        }
         private static List<PriorityIDTuple> GetBranches(BaseNode curNode) {
             List<PriorityIDTuple> res = new();
             foreach (var port in curNode.BranchPorts)
@@ -65,6 +78,20 @@ namespace CustomEditors.Dialgoue.Utilities
             //Load Entry connections
             foreach (var item in dialogueData.EntryElements)
                 MakeConnection(graphView.entryNode, graphView.NodeCache[item.ID], item.Priority, graphView);
+            //Load all groups
+            foreach (var element in dialogueData.groupDatas) {
+                Group group = new()
+                {
+                    title = element.Title,
+                };
+                group.SetPosition(element.position);
+
+                foreach (var curElement in element.NodeIDs) {
+                    group.AddElement(graphView.NodeCache[curElement]);
+                }
+                graphView.groups.Add(group);
+                graphView.Add(group);
+            }
         }
         public static void LoadConnections(DialogueElement elem, DialogueGraphView graphView) {
             foreach (var item in elem.Branches)
@@ -99,9 +126,14 @@ namespace CustomEditors.Dialgoue.Utilities
                     sentNode.Speaker = sentence.Speaker;
                     sentNode.Text = sentence.Text;
                     
-
                     graphView.AddElement(sentNode);
                     return sentNode;
+                case EventTrigger eventTrigger:
+                    EventTriggerNode eventTriggerNode = (EventTriggerNode)graphView.CreateNode(NodeType.EventTrigger, eventTrigger.NodePosition.position, eventTrigger);
+                    eventTriggerNode.scriptableEvent = eventTrigger.scriptableEvent;
+                    graphView.AddElement(eventTriggerNode);
+                    return eventTriggerNode;
+
 
                 default:
                     return null;
