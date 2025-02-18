@@ -62,24 +62,19 @@ namespace CustomEditors.Dialgoue.Utilities
 
         #region Loading
         public static void Load(DialogueData dialogueData, DialogueGraphView graphView) {
-            foreach (var element in dialogueData.EntryElements) {
-                BaseNode node = LoadTree(dialogueData.GetElement(element.ID), dialogueData, graphView);
-                MakeConnection(graphView.entryNode, node, element.Priority, graphView);
-            }
+            //Load All Elements
+            foreach (var element in dialogueData.Elements)
+                AddNode(element, graphView);
+            //Load all connections between nodes
+            foreach (var element in dialogueData.Elements)
+                LoadConnections(element, graphView);
+            //Load Entry connections
+            foreach (var item in dialogueData.EntryElements)
+                MakeConnection(graphView.entryNode, graphView.NodeCache[item.ID], item.Priority, graphView);
         }
-        public static BaseNode LoadTree(DialogueElement curElement, DialogueData data, DialogueGraphView view)
-        {
-            BaseNode node = AddNode(curElement, view);
-            foreach (var item in curElement.Branches) {
-                if (!view.NodeCache.ContainsKey(item.ID))
-                {
-                    BaseNode node2 = LoadTree(data.GetElement(item.ID), data, view);
-                    MakeConnection(node, node2, item.Priority, view); 
-                } else {
-                    MakeConnection(node, view.NodeCache[item.ID], item.Priority, view);
-                }
-            }
-            return node;
+        public static void LoadConnections(DialogueElement elem, DialogueGraphView graphView) {
+            foreach (var item in elem.Branches)
+                MakeConnection(graphView.NodeCache[elem.ID], graphView.NodeCache[item.ID], item.Priority, graphView);
         }
         public static BaseNode AddNode(DialogueElement elem, DialogueGraphView graphView) {
             switch (elem)
