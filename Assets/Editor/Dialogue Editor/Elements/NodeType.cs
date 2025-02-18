@@ -5,8 +5,7 @@ namespace CustomEditors.Dialgoue.Elements
 {
     public enum NodeType
     {
-        StartNode, 
-        ExitNode,
+        StartNode,
         SentenceNode,
         Condition,
         Information

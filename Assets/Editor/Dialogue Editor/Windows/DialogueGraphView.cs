@@ -126,8 +126,6 @@ namespace CustomEditors.Dialgoue.Windows
             {
                 case NodeType.StartNode: 
                     return new EntryNode();
-                case NodeType.ExitNode: 
-                    return new ExitNode();
                 case NodeType.SentenceNode:
                     return new SentenceNode();
                 case NodeType.Condition:

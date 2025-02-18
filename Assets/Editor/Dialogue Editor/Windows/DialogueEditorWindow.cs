@@ -18,7 +18,7 @@ namespace CustomEditors.Dialgoue.Windows
         [MenuItem("Shizounu/Dialgoue Editor")]
         public static void Open()
         {
-            GetWindow<DialogueEditorWindow>("Event Editor");
+            GetWindow<DialogueEditorWindow>("Dialogue Editor");
         }
 
         private void OnEnable()

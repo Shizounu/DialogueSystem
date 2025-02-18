@@ -30,11 +30,6 @@ namespace CustomEditors.Dialgoue.Windows
                     level = 2,
                     userData = NodeType.SentenceNode
                 },
-                new SearchTreeEntry(new GUIContent("Exit Node", indentationIcon))
-                {
-                    level = 2,
-                    userData = NodeType.ExitNode
-                },
                 new SearchTreeEntry(new GUIContent("Condition Node", indentationIcon))
                 {
                     level = 2,
@@ -67,12 +62,6 @@ namespace CustomEditors.Dialgoue.Windows
                 case NodeType.SentenceNode:
                     {
                         SentenceNode node = (SentenceNode)graphView.CreateNode(NodeType.SentenceNode, localPos);
-                        graphView.AddElement(node);
-                        return true;
-                    }
-                case NodeType.ExitNode:
-                    {
-                        ExitNode node = (ExitNode)graphView.CreateNode(NodeType.ExitNode, localPos);
                         graphView.AddElement(node);
                         return true;
                     }
