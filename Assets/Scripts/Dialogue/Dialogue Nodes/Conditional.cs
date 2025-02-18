@@ -1,3 +1,4 @@
+using ScriptableArchitecture;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace Dialogue.Data
         public Blackboard Blackboard;
         public string FactKey;
         public ConditionOperator Operator;
-        public int Value;
+        public IntReference Value;
         public override bool CanEnter()
         {
             if (!Blackboard.Facts.ContainsKey(FactKey))

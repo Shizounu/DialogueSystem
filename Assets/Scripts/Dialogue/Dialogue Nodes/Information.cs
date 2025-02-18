@@ -1,3 +1,4 @@
+using ScriptableArchitecture;
 using UnityEngine;
 
 namespace Dialogue.Data
@@ -7,7 +8,7 @@ namespace Dialogue.Data
         public Blackboard Blackboard;
         public ComparisonOperator Operator;
         public string FactKey;
-        public int Value;
+        public IntReference Value;
         public override bool CanEnter()
         {
             return true;

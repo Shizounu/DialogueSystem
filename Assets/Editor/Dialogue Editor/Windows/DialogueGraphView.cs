@@ -14,11 +14,11 @@ namespace CustomEditors.Dialgoue.Windows
         private DialogueEditorWindow editorWindow;
         private GraphSearchWindow searchWindow;
         public EntryNode entryNode;
-
         public Dictionary<string, BaseNode> NodeCache;
+
         public DialogueGraphView(DialogueEditorWindow editorWindow) {
             this.editorWindow = editorWindow;
-
+            graphViewChanged += ctx => RemoveDeletedNodes(ctx);
             Init();
         }
         public void Init()
@@ -156,6 +156,7 @@ namespace CustomEditors.Dialgoue.Windows
             );
         }
 
+
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {
             List<Port> compatiblePorts = new();
@@ -180,6 +181,19 @@ namespace CustomEditors.Dialgoue.Windows
 
             Vector2 localMousePosition = contentViewContainer.WorldToLocal(worldMousePosition);
             return localMousePosition;
+        }
+
+        public GraphViewChange RemoveDeletedNodes(GraphViewChange change)
+        {
+            if (change.elementsToRemove == null)
+                return change;
+            foreach (var item in change.elementsToRemove) {
+                if(item is BaseNode node) {
+                    NodeCache.Remove(node.UID);
+                }
+            }
+
+            return change; 
         }
 
         #endregion

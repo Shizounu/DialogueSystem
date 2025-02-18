@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 using UnityEngine;
 using System;
 using UnityEditor;
+using ScriptableArchitecture;
 
 namespace CustomEditors.Dialgoue.Utilities
 {
@@ -109,6 +110,21 @@ namespace CustomEditors.Dialgoue.Utilities
                 enumField.RegisterValueChangedCallback(onValueChanged);
 
             return enumField;
+        }
+        public static PropertyField CreateIntReferenceField(IntReference value, string Label, EventCallback<SerializedPropertyChangeEvent> onValueChanged = null)
+        {
+            IntReferenceSO intReferenceSO = ScriptableObject.CreateInstance<IntReferenceSO>();
+            intReferenceSO.intReference = value;
+
+            SerializedObject serializedObject = new(intReferenceSO);
+            SerializedProperty intReferenceProperty = serializedObject.FindProperty("intReference");
+            PropertyField propertyField = new(intReferenceProperty, Label);
+            propertyField.Bind(serializedObject);
+
+            if (onValueChanged != null)
+                propertyField.RegisterValueChangeCallback(onValueChanged);
+
+            return propertyField;
         }
     }
 }

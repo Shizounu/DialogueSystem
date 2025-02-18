@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b978ce2d66d57304d92302d06a68d61f, type: 3}
+  m_Name: TestDialogue
+  m_EditorClassIdentifier: 
+  EntryElements:
+  - rid: 8954730980927340656
+  - rid: 8954730980927340657
+  Elements:
+  - rid: 8954730980927340658
+  - rid: 8954730980927340659
+  - rid: 8954730980927340660
+  - rid: 8954730980927340661
+  - rid: 8954730980927340662
+  - rid: 8954730980927340663
+  - rid: 8954730980927340664
+  references:
+    version: 2
+    RefIds:
+    - rid: 8954730980927340656
+      type: {class: PriorityIDTuple, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        Priority: 0
+        ID: 046ba165f9352714b8865ecb9e9fc43e
+    - rid: 8954730980927340657
+      type: {class: PriorityIDTuple, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        Priority: 1
+        ID: b259258a27ab209478351bb18ede3126
+    - rid: 8954730980927340658
+      type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 046ba165f9352714b8865ecb9e9fc43e
+        Branches:
+        - Priority: 0
+          ID: 9351e75bc0395054bacd1fe97cbd5926
+        NodePosition:
+          serializedVersion: 2
+          x: 349
+          y: 300
+          width: 354
+          height: 234
+        Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
+        Text: You don't know the thing? BEGONE!
+    - rid: 8954730980927340659
+      type: {class: Conditional, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 2ef579c77b964044e9998f18e47ce94e
+        Branches:
+        - Priority: 0
+          ID: bb2b69c5e02ad7745a67495f10d69748
+        NodePosition:
+          serializedVersion: 2
+          x: 349
+          y: 534
+          width: 343
+          height: 197
+        Blackboard: {fileID: 11400000, guid: 4352807583b5b0745a25a012c9efb7d3, type: 2}
+        FactKey: Test
+        Operator: 0
+        Value:
+          useConstant: 1
+          ConstantValue: 0
+          Variable: {fileID: 0}
+    - rid: 8954730980927340660
+      type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: bb2b69c5e02ad7745a67495f10d69748
+        Branches:
+        - Priority: 0
+          ID: 9351e75bc0395054bacd1fe97cbd5926
+        NodePosition:
+          serializedVersion: 2
+          x: 785
+          y: 534
+          width: 354
+          height: 234
+        Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
+        Text: 'You know the thing? FORGET IT! '
+    - rid: 8954730980927340661
+      type: {class: Information, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 70ac377cecac19c48a16d669f865831c
+        Branches:
+        - Priority: 0
+          ID: 87b288da34fbdb9459cd7bcb97fc319d
+        NodePosition:
+          serializedVersion: 2
+          x: 1280
+          y: 300
+          width: 343
+          height: 197
+        Blackboard: {fileID: 11400000, guid: 4352807583b5b0745a25a012c9efb7d3, type: 2}
+        Operator: 2
+        FactKey: Test
+        Value:
+          useConstant: 0
+          ConstantValue: 0
+          Variable: {fileID: 11400000, guid: 7b36ead5e6ecfef429ecf0272ea4116e, type: 2}
+    - rid: 8954730980927340662
+      type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 87b288da34fbdb9459cd7bcb97fc319d
+        Branches:
+        - Priority: 0
+          ID: 1303db10ee40a274eafe9d8a58183315
+        NodePosition:
+          serializedVersion: 2
+          x: 1755
+          y: 300
+          width: 354
+          height: 234
+        Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
+        Text: Now get out of my sight.
+    - rid: 8954730980927340663
+      type: {class: Information, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: d07033c265c3e27488c40169b594e177
+        Branches: []
+        NodePosition:
+          serializedVersion: 2
+          x: 2302
+          y: 364
+          width: 276
+          height: 197
+        Blackboard: {fileID: 0}
+        Operator: 0
+        FactKey: 
+        Value:
+          useConstant: 0
+          ConstantValue: 0
+          Variable: {fileID: 0}
+    - rid: 8954730980927340664
+      type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 1303db10ee40a274eafe9d8a58183315
+        Branches: []
+        NodePosition:
+          serializedVersion: 2
+          x: 2234
+          y: 300
+          width: 354
+          height: 234
+        Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
+        Text: 'GET OUT OF MY SIGHT I SAID! '
