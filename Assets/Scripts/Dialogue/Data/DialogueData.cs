@@ -37,10 +37,15 @@ namespace Dialogue.Data
 
             return null;
         }
-
         private List<PriorityIDTuple> GetElementsWithPriority(int priority)
         {
             return EntryElements.Where(ctx => ctx.Priority == priority).ToList();
+        }
+    
+        public void Clear()
+        {
+            EntryElements.Clear();
+            Elements.Clear();
         }
     }
 

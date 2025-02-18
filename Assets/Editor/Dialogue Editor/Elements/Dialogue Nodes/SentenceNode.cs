@@ -52,7 +52,7 @@ namespace CustomEditors.Dialgoue.Elements
         {
             return new Sentence()
             {
-                ID = DialogueData.GetID(),
+                ID = this.UID,
                 Text = this.Text,
                 Speaker = this.Speaker,
                 NodePosition = this.GetPosition()

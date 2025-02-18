@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b978ce2d66d57304d92302d06a68d61f, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  EntryElements: []
+  Elements:
+  - rid: 8954730980927340629
+  - rid: 8954730980927340630
+  - rid: 8954730980927340631
+  references:
+    version: 2
+    RefIds:
+    - rid: 8954730980927340629
+      type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 2374f37bc81c4e14a88b8c7b7c5a2dfa
+        Branches: []
+        NodePosition:
+          serializedVersion: 2
+          x: 501
+          y: 66
+          width: 302
+          height: 234
+        Speaker: {fileID: 0}
+        Text: 
+    - rid: 8954730980927340630
+      type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: 7754755235f9ee74a8c49fffc3147d9b
+        Branches: []
+        NodePosition:
+          serializedVersion: 2
+          x: 501
+          y: 301
+          width: 302
+          height: 234
+        Speaker: {fileID: 0}
+        Text: 
+    - rid: 8954730980927340631
+      type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
+      data:
+        ID: c5bd07e2aaaa9fa4e9c8188f8adca6f1
+        Branches: []
+        NodePosition:
+          serializedVersion: 2
+          x: 501
+          y: 535
+          width: 302
+          height: 234
+        Speaker: {fileID: 0}
+        Text: 

@@ -56,7 +56,7 @@ namespace CustomEditors.Dialgoue.Windows
 
         public bool OnSelectEntry(SearchTreeEntry SearchTreeEntry, SearchWindowContext context)
         {
-            Vector2 localPos = graphView.getLocalMousePosition(context.screenMousePosition, true);
+            Vector2 localPos = graphView.GetLocalMousePosition(context.screenMousePosition, true);
             switch (SearchTreeEntry.userData)
             {
                 case NodeType.SentenceNode:

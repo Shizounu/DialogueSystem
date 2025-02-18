@@ -5,57 +5,62 @@ using Dialogue.Data;
 using System.Linq;
 using CustomEditors.Dialgoue.Elements;
 using System.Collections.Generic;
+
 namespace CustomEditors.Dialgoue.Utilities
 {
     public static class SavingUtility  {
-        
+
+        #region Helpers
+
+        #endregion
+
+        #region Saving
+
 
         public static void Save(string DialogueName, DialogueGraphView graphView)
         {
+            //Prepare Folder
             if (!AssetDatabase.AssetPathExists($"Assets/Prefabs/Dialogue/Dialogues/{DialogueName}")) {
                 AssetDatabase.CreateFolder("Assets/Prefabs/Dialogue/Dialogues", DialogueName);
             }
+            //Load in file
+            DialogueData data = (DialogueData)AssetDatabase.LoadAssetAtPath($"Assets/Prefabs/Dialogue/Dialogues/{DialogueName}/{DialogueName}.asset", typeof(DialogueData));
+            if(data == null)
+                data = ScriptableObject.CreateInstance<DialogueData>();
+            data.Clear();
 
-            DialogueData data = ScriptableObject.CreateInstance<DialogueData>();
+            //Save Elements
+            SaveNodes(graphView, data);
+            data.EntryElements = GetBranches(graphView.entryNode);
 
-            //Validate that the tree is connected at all to the entry
-            bool res = false; 
-            foreach (var item in graphView.entryNode.BranchPorts)
-                res = res || item.port.connected;
-            if (!res)
-            {
-                Debug.LogWarning("Starting node unconnected, not saving");
-                return;
-            }
 
-            
-            List<(int, BaseNode)> nodes = GetBranches(graphView.entryNode);
-            foreach (var node in nodes)
-                data.EntryElements.Add(new (node.Item1, GetElements(node.Item2, ref data.Elements)));                
-            
-            AssetDatabase.CreateAsset(data, $"Assets/Prefabs/Dialogue/Dialogues/{DialogueName}/{DialogueName}.asset");
+            //Save to file
+            if (!AssetDatabase.AssetPathExists($"Assets/Prefabs/Dialogue/Dialogues/{DialogueName}/{DialogueName}.asset"))
+                AssetDatabase.CreateAsset(data, $"Assets/Prefabs/Dialogue/Dialogues/{DialogueName}/{DialogueName}.asset");
             AssetDatabase.SaveAssets();
         }
 
-        private static List<(int, BaseNode)> GetBranches(BaseNode curNode) {
-            List<(int, BaseNode)> res = new();
-            foreach (var port in curNode.BranchPorts) {
-                for (int i = 0; i < port.port.connections.Count(); i++)
-                    res.Add((port.priority,(BaseNode)port.port.connections.ToList()[i].input.node));
+        private static void SaveNodes(DialogueGraphView graphView, DialogueData data)
+        {
+            foreach (var node in graphView.NodeCache) {
+                DialogueElement element = node.Value.GetElement();
+                if (element == null)
+                    continue;
+                element.Branches = GetBranches(node.Value);
+                data.Elements.Add(element);
             }
+        }
+
+        private static List<PriorityIDTuple> GetBranches(BaseNode curNode) {
+            List<PriorityIDTuple> res = new();
+            foreach (var port in curNode.BranchPorts)
+                for (int i = 0; i < port.port.connections.Count(); i++)
+                    res.Add(new (port.priority, ((BaseNode)port.port.connections.ToList()[i].input.node).UID));
             return res;
         }
-        private static string GetElements(BaseNode curNode, ref List<DialogueElement> elements) {
-            DialogueElement elem = curNode.GetElement();
-            List<(int, BaseNode)> branches = GetBranches(curNode);
-            elements.Add(elem);
-            foreach (var node in branches)
-                elem.Branches.Add(new (node.Item1, GetElements(node.Item2, ref elements)));
-            return elem.ID;
-        }
+        #endregion
 
-
-
+        #region Loading
         public static void Load(DialogueData dialogueData, DialogueGraphView graphView) {
             foreach (var element in dialogueData.EntryElements) {
                 BaseNode node = LoadTree(dialogueData.GetElement(element.ID), dialogueData, graphView);
@@ -66,8 +71,13 @@ namespace CustomEditors.Dialgoue.Utilities
         {
             BaseNode node = AddNode(curElement, view);
             foreach (var item in curElement.Branches) {
-                BaseNode node2 = LoadTree(data.GetElement(item.ID), data, view);
-                MakeConnection(node, node2, item.Priority, view);
+                if (!view.NodeCache.ContainsKey(item.ID))
+                {
+                    BaseNode node2 = LoadTree(data.GetElement(item.ID), data, view);
+                    MakeConnection(node, node2, item.Priority, view); 
+                } else {
+                    MakeConnection(node, view.NodeCache[item.ID], item.Priority, view);
+                }
             }
             return node;
         }
@@ -113,6 +123,6 @@ namespace CustomEditors.Dialgoue.Utilities
         {
             graphView.AddElement(from.GetPortWithPriority(priority).port.ConnectTo(to.inputPort));
         }
-        
+        #endregion
     }
 }

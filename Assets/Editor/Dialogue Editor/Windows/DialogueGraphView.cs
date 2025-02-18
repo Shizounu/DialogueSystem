@@ -14,6 +14,8 @@ namespace CustomEditors.Dialgoue.Windows
         private DialogueEditorWindow editorWindow;
         private GraphSearchWindow searchWindow;
         public EntryNode entryNode;
+
+        public Dictionary<string, BaseNode> NodeCache;
         public DialogueGraphView(DialogueEditorWindow editorWindow) {
             this.editorWindow = editorWindow;
 
@@ -21,6 +23,8 @@ namespace CustomEditors.Dialgoue.Windows
         }
         public void Init()
         {
+            NodeCache = new();
+
             AddManipulators();
             AddGridBackground();
             AddStyles();
@@ -60,7 +64,7 @@ namespace CustomEditors.Dialgoue.Windows
             ContextualMenuManipulator contextualMenuManipulator = new(
                 menuEvent => menuEvent.menu.AppendAction(
                     "Add Group",
-                    actionEvent => AddElement(CreateGroup("Dialogue Group", getLocalMousePosition(actionEvent.eventInfo.localMousePosition)))
+                    actionEvent => AddElement(CreateGroup("Dialogue Group", GetLocalMousePosition(actionEvent.eventInfo.localMousePosition)))
                 ));
 
             return contextualMenuManipulator;
@@ -69,7 +73,7 @@ namespace CustomEditors.Dialgoue.Windows
         private IManipulator CreateContextualMenu(string actionTitle, NodeType type)
         {
             ContextualMenuManipulator contextualMenuManipulator = new(
-                menuEvent => menuEvent.menu.AppendAction(actionTitle, actionEvent => AddElement(CreateNode(type, getLocalMousePosition(actionEvent.eventInfo.localMousePosition))))
+                menuEvent => menuEvent.menu.AppendAction(actionTitle, actionEvent => AddElement(CreateNode(type, GetLocalMousePosition(actionEvent.eventInfo.localMousePosition))))
                 );
 
             return contextualMenuManipulator;
@@ -102,10 +106,18 @@ namespace CustomEditors.Dialgoue.Windows
         public BaseNode CreateNode(NodeType type, Vector2 pos, DialogueElement elementToLoad = null) {
             BaseNode node = GetNode(type);
 
+
+
             node.Initialize(pos, this);
             if (elementToLoad != null)
                 node.LoadData(elementToLoad);
             node.Draw();
+
+            if (elementToLoad == null)
+                node.UID = DialogueData.GetID();
+            else
+                node.UID = elementToLoad.ID;
+            NodeCache.Add(node.UID, node);
 
             return node;
         }
@@ -158,7 +170,7 @@ namespace CustomEditors.Dialgoue.Windows
             return compatiblePorts;
         }
 
-        public Vector2 getLocalMousePosition(Vector2 mousePosition, bool isSearchWindow = false)
+        public Vector2 GetLocalMousePosition(Vector2 mousePosition, bool isSearchWindow = false)
         {
             Vector2 worldMousePosition = mousePosition;
             if (searchWindow)

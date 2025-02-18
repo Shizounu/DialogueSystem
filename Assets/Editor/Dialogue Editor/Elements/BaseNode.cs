@@ -11,6 +11,8 @@ using System.Linq;
 namespace CustomEditors.Dialgoue.Elements {
     public abstract class BaseNode : Node
     {
+        public string UID;
+
         public string SlideName;
         public List<PriorityPort> BranchPorts = new();
         public Port inputPort;
