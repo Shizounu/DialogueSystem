@@ -34,6 +34,7 @@ namespace CustomEditors.Dialgoue.Utilities
             //Save to file
             if (!AssetDatabase.AssetPathExists($"Assets/Prefabs/Dialogue/Dialogues/{DialogueName}/{DialogueName}.asset"))
                 AssetDatabase.CreateAsset(data, $"Assets/Prefabs/Dialogue/Dialogues/{DialogueName}/{DialogueName}.asset");
+            EditorUtility.SetDirty(data);
             AssetDatabase.SaveAssets();
         }
 
