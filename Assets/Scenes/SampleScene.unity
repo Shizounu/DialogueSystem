@@ -918,7 +918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityController: {fileID: 764414028}
   interactableController: {fileID: 764414031}
-  dialogueManager: {fileID: 0}
+  dialogueManager: {fileID: 1165776130}
 --- !u!212 &764414026
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1343,6 +1343,7 @@ MonoBehaviour:
   input: {fileID: 764414025}
   NodeHasCompleted: 0
   CanContinue: 0
+  QuickFinishWriting: 0
 --- !u!1 &1362737579
 GameObject:
   m_ObjectHideFlags: 0

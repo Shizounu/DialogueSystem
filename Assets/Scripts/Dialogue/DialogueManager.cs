@@ -15,22 +15,24 @@ public class DialogueManager : SingletonBehaviour<DialogueManager>
     [SerializeField] private Camera UICam;
     [SerializeField] private InputController input;
 
-    [Header("Dialogue")]
     [SerializeField] private DialogueElement currentElement;
-    [SerializeField] public bool NodeHasCompleted;
-    [SerializeField] public bool CanContinue;
+    [Space(), Header("Flags")]
+    public bool NodeHasCompleted;
+    public bool CanContinue;
+    public bool QuickFinishWriting;
 
     protected override void Awake()
     {
         base.Awake();
-
-        input.actions.UI.Click.performed += ctx => OnContinue();
     }
 
-    private void OnContinue()
+    public void OnContinue()
     {
         if (!CanContinue)
+        {
+            QuickFinishWriting = true;
             return;
+        }
         NodeHasCompleted = true;
     }
 
@@ -57,31 +59,29 @@ public class DialogueManager : SingletonBehaviour<DialogueManager>
 
             element = element.GetNextElement(dialogue);
         }
-        //Closing Dialogue
+        //Wait for final node
         NodeHasCompleted = false;
         CanContinue = true; 
         while (!NodeHasCompleted)
             yield return new WaitForEndOfFrame();
         DisableDialogueControl();
     }
-
-
     public void ShowSentence(Sentence sentence) {
         Nameplate.text = sentence.Speaker.Name;
         NameplateBG.color = sentence.Speaker.NameColor;
         StartCoroutine(WriteText(sentence.Text, sentence.Speaker));
     }
-
-    public IEnumerator WriteText(string text, Speaker speaker) {
+    private IEnumerator WriteText(string text, Speaker speaker) {
         CanContinue = false; 
         MainText.text = "";
         float delay = speaker.SpeechSpeed / text.Length;
         for (int i = 0; i < text.Length; i++) {
             MainText.text += text[i];
-            yield return new WaitForSeconds(delay + Random.Range(-(delay * speaker.SpeechSpeedWiggle), delay * speaker.SpeechSpeedWiggle));
+            if(!QuickFinishWriting)
+                yield return new WaitForSeconds(delay + Random.Range(-(delay * speaker.SpeechSpeedWiggle), delay * speaker.SpeechSpeedWiggle));
         }
+        QuickFinishWriting = false;
         CanContinue = true; 
         
     }
-    
 }

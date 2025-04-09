@@ -13,25 +13,25 @@ MonoBehaviour:
   m_Name: TestDialogue
   m_EditorClassIdentifier: 
   EntryElements:
-  - rid: 3300161099942330445
-  - rid: 3300161099942330446
+  - rid: 3019354802344427588
+  - rid: 3019354802344427589
   Elements:
-  - rid: 3300161099942330447
-  - rid: 3300161099942330448
-  - rid: 3300161099942330449
-  - rid: 3300161099942330450
-  - rid: 3300161099942330451
-  - rid: 3300161099942330452
-  - rid: 3300161099942330453
+  - rid: 3019354802344427590
+  - rid: 3019354802344427591
+  - rid: 3019354802344427592
+  - rid: 3019354802344427593
+  - rid: 3019354802344427594
+  - rid: 3019354802344427595
+  - rid: 3019354802344427596
   groupDatas:
-  - Title: Dialogue Group
+  - Title: Test
     NodeIDs:
     - 528d19ae7e1c9ba4f8b2d7600756c5d3
     - 9c2d8f890d777274a991dea8cfe96ab6
     position:
       serializedVersion: 2
-      x: 419
-      y: -32
+      x: 419.00003
+      y: -31.999977
       width: 787
       height: 412
   - Title: Dialogue Group
@@ -42,7 +42,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 418
       y: 391
-      width: 839
+      width: 840
       height: 318
   - Title: Dialogue Group
     NodeIDs:
@@ -58,17 +58,17 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3300161099942330445
+    - rid: 3019354802344427588
       type: {class: PriorityIDTuple, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
         Priority: 0
         ID: 528d19ae7e1c9ba4f8b2d7600756c5d3
-    - rid: 3300161099942330446
+    - rid: 3019354802344427589
       type: {class: PriorityIDTuple, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
         Priority: 1
         ID: b8941d787f387a94da1b2c155fc29586
-    - rid: 3300161099942330447
+    - rid: 3019354802344427590
       type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
         ID: 528d19ae7e1c9ba4f8b2d7600756c5d3
@@ -83,7 +83,7 @@ MonoBehaviour:
           height: 234
         Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
         Text: What? You don't know the thing? What a fool.
-    - rid: 3300161099942330448
+    - rid: 3019354802344427591
       type: {class: Conditional, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
         ID: b8941d787f387a94da1b2c155fc29586
@@ -103,7 +103,7 @@ MonoBehaviour:
           useConstant: 1
           ConstantValue: 0
           Variable: {fileID: 0}
-    - rid: 3300161099942330449
+    - rid: 3019354802344427592
       type: {class: Information, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
         ID: 1409a7869fd74e54a8615485fe1aa2e3
@@ -123,7 +123,7 @@ MonoBehaviour:
           useConstant: 1
           ConstantValue: 0
           Variable: {fileID: 0}
-    - rid: 3300161099942330450
+    - rid: 3019354802344427593
       type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
         ID: f78f9093a5d1e6f4693d451902e885e7
@@ -134,11 +134,11 @@ MonoBehaviour:
           serializedVersion: 2
           x: 865
           y: 450
-          width: 367
+          width: 368
           height: 234
         Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
         Text: What? You know the thing? FORGET IT! IMMEDIATELY!
-    - rid: 3300161099942330451
+    - rid: 3019354802344427594
       type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
         ID: b1c49d6ff6f18384c92049654dd09399
@@ -154,7 +154,7 @@ MonoBehaviour:
         Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
         Text: Now begone from my sight. I do not wish to talk to people who don't
           know the thing
-    - rid: 3300161099942330452
+    - rid: 3019354802344427595
       type: {class: Sentence, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
         ID: a5b16cfc02b6ee24dac09783576b8571
@@ -167,7 +167,7 @@ MonoBehaviour:
           height: 234
         Speaker: {fileID: 11400000, guid: 781fe2fc24b43694fa93368e617ed1ec, type: 2}
         Text: BEGONE I SAID!
-    - rid: 3300161099942330453
+    - rid: 3019354802344427596
       type: {class: EventTrigger, ns: Dialogue.Data, asm: Assembly-CSharp}
       data:
         ID: 9c2d8f890d777274a991dea8cfe96ab6
